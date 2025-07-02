@@ -2,7 +2,7 @@
   <v-container class="form-bg" fluid>
     <v-row align="center" justify="center" style="min-height: 100vh;">
       <v-col cols="12" sm="8" md="6" lg="5">
-        <v-card elevation="10" class="pa-8">
+        <v-card elevation="12" class="pa-8 colorful-card">
           <v-card-title class="justify-center">
             <h2 class="form-title">สมัครสมาชิก</h2>
           </v-card-title>
@@ -15,6 +15,8 @@
                 outlined
                 dense
                 class="mb-4"
+                color="deep-purple accent-4"
+                prepend-inner-icon="mdi-account"
                 required
               ></v-text-field>
 
@@ -25,6 +27,8 @@
                 outlined
                 dense
                 class="mb-4"
+                color="indigo"
+                prepend-inner-icon="mdi-email"
                 required
               ></v-text-field>
 
@@ -42,6 +46,8 @@
                 outlined
                 dense
                 class="mb-4"
+                color="pink"
+                prepend-inner-icon="mdi-lock"
                 required
               ></v-text-field>
 
@@ -53,6 +59,8 @@
                 outlined
                 dense
                 class="mb-4"
+                color="pink"
+                prepend-inner-icon="mdi-lock-check"
                 required
               ></v-text-field>
 
@@ -64,9 +72,9 @@
                 class="mb-4"
                 required
               >
-                <v-radio label="ชาย" value="male"></v-radio>
-                <v-radio label="หญิง" value="female"></v-radio>
-                <v-radio label="ไม่ระบุ" value="not_specified"></v-radio>
+                <v-radio label="ชาย" value="male" color="blue"></v-radio>
+                <v-radio label="หญิง" value="female" color="pink"></v-radio>
+                <v-radio label="ไม่ระบุ" value="not_specified" color="purple"></v-radio>
               </v-radio-group>
 
               <v-select
@@ -79,20 +87,26 @@
                 outlined
                 dense
                 class="mb-4"
+                color="teal"
+                prepend-inner-icon="mdi-star"
                 required
               ></v-select>
 
               <p v-if="selectedInterests && selectedInterests.length > 0" class="mb-4">
                 <span class="font-weight-medium">ความสนใจของคุณ:</span>
-                <span class="deep-purple--text">{{ selectedInterests.join(', ') }}</span>
+                <span class="interest-list">{{ selectedInterests.join(', ') }}</span>
               </p>
 
               <v-row>
                 <v-col cols="6">
-                  <v-btn color="primary" block large @click="submit">ส่งข้อมูล</v-btn>
+                  <v-btn color="deep-purple accent-4" block large dark elevation="2" @click="submit">
+                    <v-icon left>mdi-send</v-icon> ส่งข้อมูล
+                  </v-btn>
                 </v-col>
                 <v-col cols="6">
-                  <v-btn color="grey lighten-1" block large outlined @click="reset">ล้างข้อมูล</v-btn>
+                  <v-btn color="pink lighten-3" block large outlined elevation="2" @click="reset">
+                    <v-icon left color="pink">mdi-refresh</v-icon> ล้างข้อมูล
+                  </v-btn>
                 </v-col>
               </v-row>
             </v-form>
@@ -147,19 +161,42 @@ export default {
 
 <style scoped>
 .form-bg {
-  background: linear-gradient(135deg, #ede7f6 0%, #fffde7 100%);
+  background: linear-gradient(135deg, #0087fdfa 0%, #ff02e6 100%);
   min-height: 100vh;
 }
 .form-title {
   font-weight: bold;
-  color: #512da8;
+  color: #000000;
   letter-spacing: 1px;
+ 
 }
-.v-card {
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(80, 80, 160, 0.15);
+.colorful-card {
+  border-radius: 22px;
+  background: linear-gradient(120deg, #ff00d0 0%, #1a4bed 100%);
+  box-shadow: 0 8px 32px 0 rgba(124, 77, 255, 0.12), 0 1.5px 8px 0 #ff80ab33;
 }
 .v-btn {
   font-size: 1.1rem;
   font-weight: 500;
+  border-radius: 12px;
+  transition: background 0.2s;
 }
+.v-btn.deep-purple {
+  color: #fff !important;
+}
+.v-btn.pink {
+  color: #ad1457 !important;
+}
+.v-text-field,
+.v-select {
+  border-radius: 10px;
+}
+.v-radio .v-input--selection-controls__ripple {
+  background: linear-gradient(90deg, #7c4dff 0%, #ff80ab 100%);
+}
+.interest-list {
+  color: #00bfae;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+</style>
