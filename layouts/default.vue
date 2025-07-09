@@ -111,6 +111,11 @@ export default {
           title: 'Login',
           to: '/loing'
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Prodcut',
+          to: '/prodcut_jum'
+        }
       ],
       miniVariant: false,
       right: true,

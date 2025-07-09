@@ -1,8 +1,9 @@
 <template>
   <v-container class="form-bg" fluid>
-    <v-row align="center" justify="center" style="min-height: 100vh;">
+    <div class="bg-shapes"></div>
+    <v-row align="center" justify="center" style="min-height: 100vh; position: relative; z-index: 2;">
       <v-col cols="12" sm="8" md="6" lg="5">
-        <v-card elevation="12" class="pa-8 colorful-card">
+        <v-card elevation="14" class="pa-10 colorful-card">
           <v-card-title class="justify-center">
             <h2 class="form-title">สมัครสมาชิก</h2>
           </v-card-title>
@@ -160,20 +161,50 @@ export default {
 </script>
 
 <style scoped>
-.form-bg {
-  background: linear-gradient(135deg, #0087fdfa 0%, #ff02e6 100%);
-  min-height: 100vh;
+
+
+
+.bg-shapes {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+.bg-shapes::before, .bg-shapes::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  animation: floatShape 10s ease-in-out infinite alternate;
+}
+.bg-shapes::before {
+  width: 420px; height: 420px;
+  left: -120px; top: 60px;
+  background: radial-gradient(circle, #fff 0%, #7c4dff 80%, transparent 100%);
+  animation-delay: 0s;
+}
+.bg-shapes::after {
+  width: 320px; height: 320px;
+  right: -100px; bottom: 40px;
+  background: radial-gradient(circle, #fff 0%, #00e5ff 80%, transparent 100%);
+  animation-delay: 2s;
+}
+@keyframes floatShape {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(40px) scale(1.08); }
 }
 .form-title {
   font-weight: bold;
-  color: #000000;
+  color: #ffffff;
   letter-spacing: 1px;
- 
 }
 .colorful-card {
   border-radius: 22px;
-  background: linear-gradient(120deg, #ff00d0 0%, #1a4bed 100%);
+  background: linear-gradient(120deg,  #000000 100%);
   box-shadow: 0 8px 32px 0 rgba(124, 77, 255, 0.12), 0 1.5px 8px 0 #ff80ab33;
+  position: relative;
+  z-index: 2;
 }
 .v-btn {
   font-size: 1.1rem;
@@ -199,3 +230,4 @@ export default {
   font-weight: bold;
   letter-spacing: 0.5px;
 }
+</style>

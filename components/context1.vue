@@ -1,5 +1,6 @@
 <template>
   <div class="contact-fixed">
+    <div class="contact-bg-shapes"></div>
     <transition name="contact-fade">
       <v-card v-if="expanded" elevation="6" class="contact-mini-card">
         <v-card-title class="contact-mini-title d-flex justify-space-between align-center">
@@ -45,16 +46,51 @@ export default {
   justify-content: flex-end;
   align-items: flex-start;
 }
+.contact-bg-shapes {
+  position: absolute;
+  top: -60px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  z-index: 0;
+  pointer-events: none;
+}
+.contact-bg-shapes::before, .contact-bg-shapes::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.22;
+  animation: floatShape 8s ease-in-out infinite alternate;
+}
+.contact-bg-shapes::before {
+  width: 260px; height: 260px;
+  right: 0; top: 0;
+  background: radial-gradient(circle, #7c4dff 0%, #00e5ff 80%, transparent 100%);
+  animation-delay: 0s;
+}
+.contact-bg-shapes::after {
+  width: 180px; height: 180px;
+  right: 80px; top: 180px;
+  background: radial-gradient(circle, #fff 0%, #ff80ab 80%, transparent 100%);
+  animation-delay: 2s;
+}
+@keyframes floatShape {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(30px) scale(1.08); }
+}
 .contact-mini-card {
   min-width: 300px;
   max-width: 300px;
   border-radius: 14px;
   background: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 4px 18px 0 rgba(80, 80, 160, 0.13);
+  box-shadow: 0 4px 32px 0 #7c4dff33, 0 4px 18px 0 rgba(80, 80, 160, 0.13);
   transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  z-index: 2;
 }
 .contact-mini-card:hover {
-  box-shadow: 0 8px 32px 0 #7c4dff33;
+  box-shadow: 0 12px 40px 0 #7c4dff55;
   transform: translateY(-2px) scale(1.03);
 }
 .contact-mini-title {

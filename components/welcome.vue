@@ -17,10 +17,13 @@
             <div class="mb-4">กรุณาคลิกปุ่มด้านล่างเพื่อเริ่มต้นการสมัครสมาชิก</div>
           </v-card-text>
           <v-row justify="center">
-            <v-btn color="deep-purple accent-4" large class="welcome-btn" to="/">
+            <v-btn color="deep-purple accent-4" large class="welcome-btn" to="COM_jum">
+              สมัครสมาชิก 
               <v-icon left>mdi-account-plus</v-icon>
-
-              สมัครสมาชิก
+           
+               
+            
+          
             </v-btn>
           </v-row>
         </v-card>
@@ -87,7 +90,7 @@ export default {
   box-shadow: 0 8px 32px 0 rgba(124, 77, 255, 0.12), 0 1.5px 8px 0 #80d8ff33;
 }
 .welcome-title {
-  color: #0015ff;
+  color: #0514e2;
   text-shadow: 1px 2px 8px #b388ff44;
 }   
 .welcome-btn {
@@ -95,12 +98,12 @@ export default {
   font-weight: 600;
   border-radius: 16px;
   box-shadow: 0 2px 8px 0 #7c4dff33;
-  letter-spacing: 1px;
+  letter-spacing: 1px; 
 }
 .v-avatar img {
   border-radius: 50%;
-  border: 4px solid #7c4dff33;
-  background: #ffffff;
+  border: 4px solid #fffafa;
+  background: #000000;
 }
 @media (min-width: 960px) {
   .welcome-card {
