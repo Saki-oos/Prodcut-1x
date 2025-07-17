@@ -17,13 +17,13 @@
             <div class="mb-4">กรุณาคลิกปุ่มด้านล่างเพื่อเริ่มต้นการสมัครสมาชิก</div>
           </v-card-text>
           <v-row justify="center">
-            <v-btn color="deep-purple accent-4" large class="welcome-btn" to="COM_jum">
+            <v-btn color="deep-purple accent-4" large class="welcome-btn" to="/loing">
               สมัครสมาชิก 
-              <v-icon left>mdi-account-plus</v-icon>
+              <v-icon left> mdi-account-plus</v-icon>
            
                
             
-          
+            
             </v-btn>
           </v-row>
         </v-card>

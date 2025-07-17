@@ -102,20 +102,27 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'context',
+          icon: 'mdi-email',
+          title: 'Contact',
           to: '/context'
         },
          {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-login',
           title: 'Login',
           to: '/loing'
         },
-        {
-          icon: 'mdi-chart-bubble',
+         {
+          icon: ' mdi-cart',
           title: 'Prodcut',
           to: '/prodcut_jum'
-        }
+        },
+         {
+          icon: 'mdi-shield-account',
+          title: 'Admin Login',
+          to: '/Ln-Am1'
+        },
+        
+      
       ],
       miniVariant: false,
       right: true,
