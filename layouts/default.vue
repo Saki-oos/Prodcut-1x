@@ -116,12 +116,18 @@ export default {
           title: 'Prodcut',
           to: '/prodcut_jum'
         },
+          {
+          icon: 'mdi-book-open-page-variant',
+          title: 'book',
+          to: '/book_select'
+        },
          {
           icon: 'mdi-shield-account',
           title: 'Admin Login',
           to: '/Ln-Am1'
         },
-        
+      
+          
       
       ],
       miniVariant: false,

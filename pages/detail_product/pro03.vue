@@ -12,8 +12,8 @@
                    <div>{{ product.description5 }}</div>
             </v-card-text>
         </v-card>
-        <v-alert v-else type="error" outlined>
-            ไม่พบข้อมูลนักเรียน
+       
+          
         </v-alert>
     </v-container>
 </template>
