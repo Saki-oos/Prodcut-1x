@@ -82,12 +82,13 @@ export default {
 .contact-mini-card {
   min-width: 300px;
   max-width: 300px;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.95);
+  border-radius: 18px;
+  background: linear-gradient(120deg, #fff 60%, #ffe3f6 100%);
   box-shadow: 0 4px 32px 0 #7c4dff33, 0 4px 18px 0 rgba(80, 80, 160, 0.13);
   transition: box-shadow 0.2s, transform 0.2s;
   position: relative;
   z-index: 2;
+  color: #111 !important;
 }
 .contact-mini-card:hover {
   box-shadow: 0 12px 40px 0 #7c4dff55;
@@ -96,7 +97,7 @@ export default {
 .contact-mini-title {
   font-size: 1.08rem;
   font-weight: bold;
-  color: #1976d2;
+  color: #7c3aed;
   padding-bottom: 0;
   padding-top: 8px;
   letter-spacing: 0.5px;
@@ -110,7 +111,7 @@ export default {
 }
 .contact-mini-text {
   font-size: 0.97rem;
-  color: #fff;
+  color: #111 !important;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -122,15 +123,9 @@ export default {
   align-items: center;
   margin-bottom: 2px;
 }
-.contact-email {
-  color: #7c4dff;
-  font-weight: 500;
-  margin-left: 4px;
-  word-break: break-all;
-}
-.contact-phone {
-  color: #7c4dff;
-  font-weight: 500;
+.contact-email, .contact-phone {
+  color: #f472b6;
+  font-weight: 600;
   margin-left: 4px;
   word-break: break-all;
 }
@@ -138,7 +133,7 @@ export default {
   margin-top: 8px;
 }
 .contact-expand-btn {
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(120deg, #fffbe7 60%, #ffe3f6 100%);
   border-radius: 50%;
   box-shadow: 0 2px 8px 0 #00ffc322;
   transition: box-shadow 0.2s;

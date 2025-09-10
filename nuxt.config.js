@@ -30,7 +30,10 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    // '~/plugins/axios.js',
+    
   ],
+  
   /*
   ** Nuxt.js dev-modules
   */
@@ -50,6 +53,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+     baseURL: 'http://localhost/library_pytdb',
+     
   },
   /*
   ** vuetify module configuration
