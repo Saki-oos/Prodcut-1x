@@ -130,6 +130,12 @@ export default {
           to: '/Ln-Am1'
         },
       
+        {
+          icon: 'mdi-shield-account',
+          title: 'Admin Dashboard',
+          to: 'AdminDashboard'
+        },
+      
           
       
       ],

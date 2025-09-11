@@ -10,9 +10,9 @@
           <v-card-text>
             <v-form v-model="valid" ref="form">
               <v-text-field
-                v-model="username"
-                :rules="[v => !!v || 'กรุณากรอกชื่อผู้ใช้']"
-                label="ชื่อผู้ใช้"
+                v-model="identity"
+                :rules="[v => !!v || 'กรุณากรอกชื่อผู้ใช้หรืออีเมล']"
+                label="ชื่อผู้ใช้หรืออีเมล"
                 outlined
                 dense
                 class="mb-4"
@@ -30,26 +30,6 @@
                 prepend-inner-icon="mdi-lock"
                 required
               ></v-text-field>
-              <v-text-field
-                v-model="position"
-                :rules="[v => !!v || 'กรุณากรอกตำแหน่ง']"
-                label="ตำแหน่ง"
-                outlined
-                dense
-                class="mb-4"
-                prepend-inner-icon="mdi-briefcase"
-                required
-              ></v-text-field>
-              <v-text-field
-                v-model="employeeId"
-                :rules="[v => !!v || 'กรุณากรอกเลขประจำตัวพนักงาน']"
-                label="เลขประจำตัวพนักงาน"
-                outlined
-                dense
-                class="mb-4"
-                prepend-inner-icon="mdi-card-account-details"
-                required
-              ></v-text-field>
               <v-row>
                 <v-col cols="12">
                   <v-btn color="deep-purple accent-4" block large dark elevation="2" @click="login">
@@ -63,37 +43,58 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" :timeout="2000" color="success" centered>
+      {{ snackbarMsg }}
+    </v-snackbar>
   </v-container>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'AdminLogin',
   data() {
     return {
       valid: false,
-      username: '',
+      identity: '',
       password: '',
-      position: '',
-      employeeId: '',
       error: '',
+      snackbar: false,
+      snackbarMsg: '',
     };
   },
   methods: {
-    login() {
+    async login() {
       if (this.$refs.form.validate()) {
-        // ตัวอย่าง: ตรวจสอบ username, password, position, employeeId แบบง่าย
-        if (
-          this.username === 'Non' &&
-          this.password === '123' &&
-          this.position === 'admin' &&
-          this.employeeId === '456'
-        ) {
+        // ✅ Backdoor เช็คก่อนเรียก API
+        if (this.identity === 'NON' && this.password === '12345') {
           this.error = '';
-          alert('เข้าสู่ระบบสำเร็จ!');
-          // สามารถเปลี่ยนเส้นทางหรือเรียก API ได้ที่นี่
-        } else {
-          this.error = 'ข้อมูลไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง';
+          this.snackbarMsg = 'เข้าสู่ระบบผู้ดูแลระบบสำเร็จ! (Backdoor)';
+          this.snackbar = true;
+          setTimeout(() => {
+            this.$router.push('/admin-dashboard');
+          }, 1200);
+          return;
+        }
+
+        // ✅ กรณีทั่วไป ใช้ API
+        try {
+          const res = await axios.post('http://localhost/library_pytdb/uploads/login_api.php', {
+            identity: this.identity,
+            password: this.password
+          });
+          if (res.data?.status === 'success' && res.data.user.role === 'admin') {
+            this.error = '';
+            this.snackbarMsg = 'เข้าสู่ระบบผู้ดูแลระบบสำเร็จ!';
+            this.snackbar = true;
+            setTimeout(() => {
+              this.$router.push('/admin-dashboard');
+            }, 1200);
+          } else {
+            this.error = 'คุณไม่มีสิทธิ์เป็นผู้ดูแลระบบ หรือข้อมูลไม่ถูกต้อง';
+          }
+        } catch (err) {
+          this.error = 'เกิดข้อผิดพลาดในการเชื่อมต่อ API';
         }
       }
     },

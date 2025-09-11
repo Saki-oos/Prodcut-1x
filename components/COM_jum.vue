@@ -1,7 +1,6 @@
 <template>
   <v-container class="mini-bookstore-bg py-8" fluid>
-    <div class="bg-shapes"></div>
-    <v-row align="center" justify="center" style="min-height: 100vh; position: relative; z-index: 2;">
+    <v-row align="center" justify="center" style="min-height: 100vh;">
       <v-col cols="12" sm="8" md="6" lg="5">
         <v-card elevation="14" class="pa-10 colorful-card">
           <v-card-title class="justify-center">
@@ -98,7 +97,7 @@
             </v-form>
             <div v-if="isLoggedIn" class="mt-6 text-center">
               <v-chip color="success" dark>
-                เข้าสู่ระบบแล้ว: {{ user.name }} ({{ user.email }})
+                เข้าสู่ระบบแล้ว: {{ user.name }} ({{ user.email }}) [{{ user.role }}]
               </v-chip>
             </div>
           </v-card-text>
@@ -261,12 +260,6 @@ export default {
   color: #00bfae;
   font-weight: bold;
   letter-spacing: 0.5px;
-}
-.bg-shapes::before {
-  background: radial-gradient(circle, #fff 0%, #7c4dff 80%, transparent 100%);
-}
-.bg-shapes::after {
-  background: radial-gradient(circle, #fff 0%, #f472b6 80%, transparent 100%);
 }
 .v-application, .v-application * {
   color: #111 !important;
